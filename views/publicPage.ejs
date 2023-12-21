@@ -1,0 +1,81 @@
+<%include ./partials/header.ejs%>
+<main class="w-full" style="height: 562px;padding-bottom: 3px; overflow: hidden; overflow-y: scroll;">
+    
+           
+       <div class="w-full mt-1 h-28 overflow-hidden overflow-x-scroll flex place-items-center "  >
+        <% alluser.forEach(user=> { %>
+          <div class="w-20 h-22 rounded-sm m-2  bg-gray-200" style="box-shadow: 1px 1px 5px 1px red;">
+    <div class=" w-16 h-16 ml-2 mr-2 bg-red-400 rounded-full bg-cover overflow-hidden ">
+        <img src="/images/uploads/<%=user.profileImage %>" alt="">
+    </div>
+    <p class="ml-1"><%=user.username%></p>
+  </div>
+  <% })%>
+</div>
+  <br>
+  
+  <!--Dialog start forom here-->
+  <dialog id="myDialog" style=" width: 100%; height: 400px; margin-top: 160px; box-shadow: 0px 1px 10px 2px gray;" class="rounded-md" >
+    <!-- Close button for the dialog -->
+    <button class="float-right rounded-md w-8 h-8" id="closeDialogBtn"><i class="ri-close-fill"></i></button>
+ <div>
+     <!-- Dialog content goes here -->
+     <!--this is for post -->
+<form class="mt-20 ml-20" action="/createpost"  method="post" enctype="multipart/form-data" id="createpost">
+  <input class="outline-none mb-8" type="text" name="filecaption" placeholder="some caption for your post ..">
+ <input required id="input" type="file" name="file" ><br>
+<button value="submit" type="submit" class="mt-8 rounded-md w-20 h-6 bg-green-500">Post</button>
+</form>
+ </div>
+</dialog>
+<!--Dialog over forom here-->
+
+    <% publicPost.forEach(post=>{ %>
+    <div style=" box-shadow: 1px 1px 1px 1px gray; float:left;" class=" w-32 rounded-xl mt-2 h-48 ml-2 px-1 pt-2 ">
+        <div class="ml-3 w-7 h-7 bg-cover mr-1 overflow-hidden float-left" style="border-radius: 50%;"><img
+            src="/images/uploads/<%=post.user.profileImage%>" alt=""></div>
+    <h5><%=post.user.username%></h5>
+        <div class="overflow-hidden w-full h-32 pt-1">
+            <img src="/images/uploads/<%=post.image%>" alt="">
+        </div>
+        <p class="ml-2"><%= post.imageText %></p>
+    </div>
+    <%})%>
+</main>
+
+ <!-- footer box start from here -->
+ <footer class="bg-gray-300 w-full h-8 flex  " style=" position: fixed; margin-top: 3px;">
+    <a href="/publicPage"> <div class="float-left w-5 h-6 pt-1 " style="margin-left: 22%;"><img 
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAs
+          TAAALEwEAmpwYAAACB0lEQVR4nM2UMYsTURDHV9RCOBQUwUoLsfDUzMQlRy7zz72dySJ3WucD+AFEO7+BYCn6Aew
+          Eiwgqgnd2toKNoKWelV53np2ozG4Mm2Q3l+gWDjzYHd77/2bem5ko+l8t7uhZhj1m2C6LPV8OYakW4eUQlgh2h8R2
+          CHZ7ZWX9KEEfMvT+v2ofYFifYB898ljS0yNo+8pxhn5prIaLf6V8qWuXGfqaYG8IiZTtYbGbJPZqIeFWq3eCxO55d
+          C7Q7/cPVu0NIRxi2DvqJtf2FY7j+PAwoh0HxGl6bJ6AuKNXGfbBz1duaiLpZZFAt0j0QrSgEfQFid2apq+l51j0GcN
+          +1bLEPrPYRtRut4+w6F2/Dob95K52ohqsISlYdDti6IBEH7VCOOXk4qbmqp7xymDRPb+yYmnOY5meH/ZmGTkKlokX0
+          ibo5uIA6NMm9EYZgMW+Tdzt7sIArxSv87wbJzKAblVlQNJLCPqJkYSZgPxDH+QNVfIG0M1hJi//vEH+gHl2BP3e6Kr
+          NBHjHZt06ASgzj9zfbbwk/X86kzE979yiw7uRoNeLXVkqPgMyBsjGw9CRjwp9kh/Wgf8319LzleIVkKkbcce4uA2XDh
+          g4ybC3+3ew7nmmlYBpcRtBvBlJ7Ou8kHLAjEWw9yT6Y75ZlF/nOMAHVF3DDhlkexKw4c66xJvorc8u+hrsN34MkkHv+
+          zyoAAAAAElFTkSuQmCC"></a></div>
+      <button class="float-left w-5 h-6 pt-1 " id="openDialogBtn" style="margin-left: 22%;"><i class="fa fa-plus" 
+          style="font-size:24px;"></i></button>
+      <div class="float-left w-6 h-7 pt-1 " style="margin-left: 22%;"> <a href="/profile">
+           <div class=" w-full h-full bg-cover overflow-hidden float-left" style="border-radius: 50%;"><img
+          src="/images/uploads/<%=loginuser.profileImage%>" alt=""></div></a>
+ </div>
+  </footer>
+  <script>
+     const openDialogBtn = document.getElementById('openDialogBtn');
+    const closeDialogBtn = document.getElementById('closeDialogBtn');
+    const myDialog = document.getElementById('myDialog');
+
+    openDialogBtn.addEventListener('click', () => {
+        // Show the dialog
+        myDialog.showModal();
+    });
+
+    closeDialogBtn.addEventListener('click', () => {
+        // Close the dialog
+        myDialog.close();
+    });
+  </script>
+<%include ./partials/navebar.ejs%>

@@ -1,0 +1,28 @@
+<% include ./partials/header.ejs%>
+<div style="display: grid; place-items: center;">
+  <div class="w-52 px-4 mt-36 py-4  h-80 rounded-xl"
+   style=" box-shadow: 1px 1px 5px 3px rgb(0, 188, 240); ">
+   <form action="/register" method="post"  >
+   <div class="w-16 h-16 mb-4 overflow-hidden  ml-14 pt-3" 
+   style="border-radius: 50% ;  box-shadow: 2px 2px 6px 1px rgb(0, 188, 240);">
+  <img src="https://cdn.pixabay.com/animation/2023/08/10/21/14/21-14-12-148_512.gif" alt="">
+  </div>
+   <input required  type="text" name="username" placeholder="Username"
+    class="rounded-xl my-2 w-52  text-black font-md  border-0 py-1 px-4 h-6" 
+    style="outline: none;  box-shadow: 1px 1px 5px 3px rgb(0, 188, 240)">
+    <input required type="email" name="email" placeholder="Email"
+    class="rounded-xl my-2 w-52 text-black font-md border-0 py-1 px-4 h-6" 
+    style="outline: none;  box-shadow: 1px 1px 5px 3px rgb(0, 188, 240)">
+    <input required type="password" name="password" placeholder="Password"
+    class="rounded-xl my-2 w-52  text-black font-md border-0 py-1 px-4 h-6" 
+    style="outline: none;  box-shadow: 1px 1px 5px 3px rgb(0, 188, 240)">
+    <input required type="number" name="contact" placeholder="Contact"
+    class="rounded-xl my-2 w-52  text-black font-md border-0 py-1 px-4 h-6" 
+    style="outline: none;  box-shadow: 1px 1px 5px 3px rgb(0, 188, 240)">
+    <button type="submit" class="rounded-xl text-white  mt-2 w-44 text-black font-md border-0  h-5" 
+    style="outline: none; background-color: rgb(1, 150, 1);  box-shadow: 1px 1px 5px 1px rgb(0, 188, 240);"><p>Create Account</p></button>
+ </form>
+<p class="text-sm pt-1 pl-2" >You have a Account ? <a href="/loginAccount">LogIn</a></p>
+  </div>
+</div>
+<% include ./partials/header.ejs%>
